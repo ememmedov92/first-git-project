@@ -1,6 +1,5 @@
 ################################
 #TASK1
-from turtle import distance
 
 
 a1 = int(input("Ededi daxil edin: "))
