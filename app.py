@@ -200,4 +200,154 @@ else:
     print("Odemeli oldugun pul :", son, "AZN")
 
 ##########################################
-#TASK13g
+#TASK13
+
+age = int(input("Yasinizi daxil edin: "))
+maas = int(input("Aylig maasinizi daxil edin: "))
+qiymet = int(input("Istifade etdiyiniz kredit meblegi: "))
+
+if age < 0:
+    print("Sehvdi")
+else:
+    if maas < 0:
+        print("Sehvdi")
+    else:
+        if qiymet <= 0:
+            print("Sehvdi")
+        else:
+            if age < 18:
+                print("Sehvdi")
+            else:
+                if maas < 500:
+                    print("Sehvdi")
+                else:
+                    if qiymet > 10 * maas :
+                        print("Sehvdi")
+                    else:
+                        print("Alindi")
+                        print("Hersey hazirdi.")
+
+###########################################
+#TASK14
+
+a = int(input("1 ci terefi : "))
+b = int(input("2 ci terefi : "))
+c = int(input("3 ci terefi : "))
+
+if a <= 0:
+    print("Olmaz")
+else:
+    if b <= 0:
+        print("Olmaz")
+    else:
+        if c <= 0:
+            print("Olmaz")
+        else:
+            if a + b > c:
+                if a + c > b:
+                    if b + c > a:
+                        if a == b:
+                            if b == c:
+                                print("Beraberterefli")
+                            else:
+                                print("Beraberyanli")
+                        else:
+                            if a == c:
+                                print("Beraberyanli")
+                            else:
+                                if b == c:
+                                    print("Beraberyanli")
+                                else:
+                                    print("3 terefi ferqli")
+                    else:
+                        print("Olmaz")
+                else:
+                    print("Olmaz")
+            else:
+                print("Olmaz")
+
+#########################################
+#Task15
+dimnetice = int(input("Enter exam score (0-700): "))
+mektebnetice = int(input("Enter school score (0-100): "))
+age = int(input("Enter age: "))
+
+if age < 0:
+    print("Olmaz.")
+elif dimnetice < 0 or dimnetice > 700:
+    print("Olmaz.")
+elif mektebnetice < 0 or mektebnetice > 100:
+    print("Olmaz.")
+elif age < 16:
+    print("Olmaz.")
+elif dimnetice >= 600:
+    print("Scholarship")
+elif dimnetice >= 450:
+    print("Qebul")
+elif dimnetice >= 300:
+    if mektebnetice >= 80:
+        print("Qebul")
+    else:
+        print("Olmaz.")
+else:
+    print("Olmaz.")
+
+#########################################
+#TASK16
+score = int(input("Ededi daxil ele: "))
+
+if score < 0 or score > 100:
+    print("Olmaz.")
+else:
+    if score >= 51 :
+        print("Pass")
+    else :
+        print("Fail")
+
+#########################################
+#TASK17
+total = int(input("pulunu yaz : "))
+he_ya_yox = input("he mi yox mu : ")
+if total < 0 or he_ya_yox != "he" :
+    print("Olmaz")
+if total > 100 or he_ya_yox != "he" :
+    print("tam endrirm")
+    print("Odeyin" , total)
+else :
+    print("5 man olmasin")
+    print("Odeyin" , total + 5)
+
+#########################################
+#TASK18
+
+heftegunu = int(input("Heftetin gununu daxil ele reqemle haa : "))
+
+match heftegunu:
+    case 1:
+        day_name = "Monday"
+        day_type = "Study day"
+    case 2:
+        day_name = "Tuesday"
+        day_type = "Study day"
+    case 3:
+        day_name = "Wednesday"
+        day_type = "Study day"
+    case 4:
+        day_name = "Thursday"
+        day_type = "Study day"
+    case 5:
+        day_name = "Friday"
+        day_type = "Study day"
+    case 6:
+        day_name = "Saturday"
+        day_type = "Weekend"
+    case 7:
+        day_name = "Sunday"
+        day_type = "Weekend"
+    case _:
+        day_name = "Invalid day"
+        day_type = ""
+
+print(day_name)
+if day_type != "":
+    print(day_type)
