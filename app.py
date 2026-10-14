@@ -351,3 +351,47 @@ match heftegunu:
 print(day_name)
 if day_type != "":
     print(day_type)
+
+
+#############################
+#TASK19
+
+kod = input("T ya C ya da J: ")
+reqem = input("1 den 10 a kimi eded yaz: ")
+
+if not reqem.isdigit():
+    print("reqem yazma.")
+else:
+    quantity = int(reqem)
+
+    if quantity < 1 or quantity > 10:
+        print("1 den 10 a kimi eded yaz.")
+    else:
+        match kod:
+            case "T":
+                drink = "Tea"
+                price = 2
+            case "C":
+                drink = "Coffee"
+                price = 4
+            case "J":
+                drink = "Juice"
+                price = 3
+            case _:
+                drink = None
+                price = 0
+
+        if drink is None:
+            print("Ya T ya J ya da C yaz.")
+        else:
+            total = price * quantity
+            if total >= 20 :
+                olcu = "Large order" 
+            else :
+                olcu = "Regular order"
+            if total >= 20:
+
+            print("Drink: " + drink)
+            print("Quantity: " + str(quantity))
+            print("Total: " + str(total) + " AZN")
+            print(olcu)
