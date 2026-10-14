@@ -356,42 +356,217 @@ if day_type != "":
 #############################
 #TASK19
 
-kod = input("T ya C ya da J: ")
-reqem = input("1 den 10 a kimi eded yaz: ")
+# İçki kodunu və miqdarı daxil edirik
+code = input("İçki kodunu daxil edin (T, C, J): ")
+miqdar = int(input("Miqdari daxil edin (1-10): "))
 
-if not reqem.isdigit():
-    print("reqem yazma.")
-else:
-    quantity = int(reqem)
+if 1 <= miqdar <= 10:
+    
+    match code:
+        case "T":
+            drink_name = "Tea (Çay)"
+            price = 2
+        case "C":
+            drink_name = "Coffee (Kofe)"
+            price = 4
+        case "J":
+            drink_name = "Juice (Şirə)"
+            price = 3
+        case _:
+            drink_name = "Naməlum"
+            price = 0
+            print("Xəta: Yalniz böyük hərflərlə T, C və ya J daxil edin!")
 
-    if quantity < 1 or quantity > 10:
-        print("1 den 10 a kimi eded yaz.")
-    else:
-        match kod:
-            case "T":
-                drink = "Tea"
-                price = 2
-            case "C":
-                drink = "Coffee"
-                price = 4
-            case "J":
-                drink = "Juice"
-                price = 3
-            case _:
-                drink = None
-                price = 0
+    if price > 0:
+        total = price * miqdar
 
-        if drink is None:
-            print("Ya T ya J ya da C yaz.")
+        if total >= 20 :
+            order_status = "Large order"  
         else:
-            total = price * quantity
-            if total >= 20 :
-                olcu = "Large order" 
-            else :
-                olcu = "Regular order"
-            if total >= 20:
+            order_status = "Regular order"
+        
+        print("İçki:", drink_name)
+        print("Miqdar:", miqdar)
+        print("Ümumi qiymət:", total, "AZN")
+        print("Sifariş növü:", order_status)
 
-            print("Drink: " + drink)
-            print("Quantity: " + str(quantity))
-            print("Total: " + str(total) + " AZN")
-            print(olcu)
+else:
+    print("Xəta: Miqdar yalniz 1 ilə 10 arasinda ola bilər!")
+
+##############################
+#TASK20
+
+id = input("Tələbə nömrəsini daxil edin: ")
+
+if len(id) == 0:
+    print("Boş daxiletmə qəbul olunmur")
+elif len(id) != 8:
+    print("Tələbə nömrəsi tam olaraq 8 simvoldan ibarət olmalidir")
+elif not id.isdigit():
+    print("Nömrə yalniz rəqəmlərdən ibarət olmalidir")
+else:
+    print("Qəbul edilən nömrə:", id)
+
+##############################
+#TASK21
+
+esl = "0427"
+
+yaz = input("daxil ele kodu: ")
+
+if len(yaz) == 0:
+    print("bos qoyma")
+elif len(yaz) != 4:
+    print("4 digits olmalidi")
+elif not yaz.isdigit():
+    print("ancaq reqemler")
+elif yaz == esl:
+    print("Halaldi sene")
+else:
+    print("Sehvdi")
+
+###############################
+#TASK22
+
+nomre = input("Nomreni daxil edin: ")
+if len(nomre) == 0:
+    print("Bos qoyma")
+elif len(nomre) != 10:
+    print("Nomre 10 reqemden ibaret olmalidi")
+elif not nomre.isdigit():
+    print("Nomre yalniz reqemlerden ibaret olmalidi")
+elif nomre[0:3] != "050" and nomre[0:3] != "051" and nomre[0:3] != "055" and nomre[0:3] != "070" and nomre[0:3] != "077" and nomre[0:3] != "099":
+    print("Nomre yalniz 050, 051, 055, 070, 077 ve 099 ile baslamalidi")
+else:
+    print("Nomre qebul olundu:", nomre)
+
+#############################
+#TASK23
+
+var = 1000
+pin = "0742"
+daxil = input("Pin daxil edin: ")
+if not daxil.isdigit():
+    print("Pin yalniz reqemlerden ibaret olmalidi")
+elif len(daxil) != 4:
+    print("Pin tam olaraq 4 reqemden ibaret olmalidi")
+elif daxil != pin:
+    print("Sehv pin")
+else: 
+    print("Pin dogrudur. Balansiniz:", var, "AZN")
+    cek = input("Cekeceyiniz meblegi daxil edin: ")
+    if not cek.isdigit():
+        print("Xəta: Məbləğ yalnız rəqəmlərdən ibarət olmalıdır!")
+    else:
+        cek = int(cek)
+        if cek <= 0:
+            print("Mebleg menfi ola bilmez")
+        elif cek > var :
+            print("Balansinizda kifayet qeder pul yoxdur")
+        elif 10 <= cek <= 500 and cek % 10 == 0:
+            print("sertimiz var olmaz")
+        elif cek > 200 :
+            print("Mebleg 200 AZN-dan cox olanda 2 manat gotururuk elave") 
+            print("Cekeceyiniz mebleg:", cek, "AZN")
+            print("Balansiniz:", var - cek - 2, "AZN")
+        else:
+            print("Cekeceyiniz mebleg:", cek, "AZN")
+            print("Balansiniz:", var - cek, "AZN")
+
+
+##############################
+#TASK24
+
+# • Read product code, quantity, coupon code, and delivery code as strings.
+# • Use match / case for products: K = Keyboard (40 AZN), M = Mouse (20 AZN), H = Headphones (60 AZN). Only
+# these uppercase codes are valid.
+# • Quantity must contain ASCII digits only and represent a value from 1 to 5. Reject empty input, letters, spaces, signs,
+# and decimal points before conversion.
+# • Coupon must be exactly NONE or SAVE10. SAVE10 gives a 10% discount only when the subtotal is at least 100
+# AZN; otherwise reject it as ineligible.
+# • Use match / case for delivery: P = Pickup (free), S = Standard. Any other code is invalid.
+# • For Standard delivery, use a ternary expression: free when the discounted subtotal is at least 80 AZN, otherwise 5
+# AZN.
+# • Validate in this order: product, quantity format, quantity range, coupon code, coupon eligibility, delivery code. Print
+# the first error and no receipt if invalid.
+# • On success, display product, quantity, subtotal, discount, delivery fee, and final total.
+
+#################################
+#TASK24
+
+product_code = input("Məhsul kodunu daxil edin (K - Keyboard, M - Mouse, H - Headphones): ")
+
+match product_code:
+    case "K":
+        product_name = "Keyboard"
+        unit_price = 40
+        valid_product = True
+    case "M":
+        product_name = "Mouse"
+        unit_price = 20
+        valid_product = True
+    case "H":
+        product_name = "Headphones"
+        unit_price = 60
+        valid_product = True
+    case _:
+        valid_product = False
+        print("Xəta: Naməlum məhsul kodu! Yalnız böyük K, M və ya H qəbul olunur.")
+
+if valid_product:
+    qty_input = input("Miqdarı daxil edin (1-5): ")
+    
+    if len(qty_input) == 0 or not qty_input.isdigit():
+        print("Xəta: Miqdar boş ola bilməz və yalnız rəqəmlərdən ibarət olmalıdır!")
+    else:
+        quantity = int(qty_input)
+        
+        if not (1 <= quantity <= 5):
+            print("Xəta: Miqdar yalnız 1 ilə 5 arasında ola bilər!")
+        else:
+            coupon = input("Kupon kodunu daxil edin (NONE və ya SAVE10): ")
+            
+            if coupon != "NONE" and coupon != "SAVE10":
+                print("Xəta: Yanlış kupon kodu! Yalnız NONE və ya SAVE10 qəbul olunur.")
+            else:
+                subtotal = unit_price * quantity
+                
+                if coupon == "SAVE10" and subtotal < 100:
+                    print("Xəta: SAVE10 kuponu yalnız alt-cəmi 100 AZN və ya daha çox olan sifarişlərə tətbiq edilir!")
+                else:
+                    delivery_code = input("Çatdırılma kodunu daxil edin (P - Pickup, S - Standard): ")
+                    
+                    match delivery_code:
+                        case "P":
+                            delivery_name = "Pickup"
+                            valid_delivery = True
+                        case "S":
+                            delivery_name = "Standard"
+                            valid_delivery = True
+                        case _:
+                            valid_delivery = False
+                            print("Xəta: Yanlış çatdırılma kodu! Yalnız P və ya S qəbul olunur.")
+                    
+                    if valid_delivery:
+                        discount = (subtotal * 0.10) if coupon == "SAVE10" else 0
+                        discounted_subtotal = subtotal - discount
+                        
+                        if delivery_code == "P":
+                            delivery_fee = 0
+                        else:
+                            delivery_fee = 0 if discounted_subtotal >= 80 else 5
+                        
+                        final_total = discounted_subtotal + delivery_fee
+                        
+                        print("\n--- Sifariş Qəbzi ---")
+                        print("Məhsul:", product_name)
+                        print("Miqdar:", quantity)
+                        print("Alt-cəmi:", subtotal, "AZN")
+                        print("Endirim:", discount, "AZN")
+                        print("Çatdırılma növü:", delivery_name)
+                        print("Çatdırılma haqqı:", delivery_fee, "AZN")
+                        print("Yekun məbləğ:", final_total, "AZN")
+
+############################################
+#TASK25
+
