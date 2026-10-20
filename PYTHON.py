@@ -52,8 +52,8 @@ for item in range(5):
 
 average = total / 5
 
-print(f"Total: {total}")
-print(f"Average: {average}")
+print(f"Total: {total : .2f}")
+print(f"Average: {average :2f}")
 
 ############################
 #TASK5
@@ -154,7 +154,7 @@ while grade != -1:
 print(f"Passed: {passed}")
 print(f"Failed: {failed}")
 print(f"Highest: {highest}")
-print(f"Average: {total / count.2f}")
+print(f"Average: {total / count : .2f}")
 
 ######################################################
 #TASK12
@@ -180,6 +180,149 @@ while True:
         print("Unknown command")
 
     print(f"Free spaces: {free_spaces}")
+
+#########################################################
+#TASK13
+
+temps = [int(input(f"Day {i}: ")) for i in range(1 , 8)]
+
+hot_days = sum(1 for temp in temps if temp > 30)
+
+hottest_day = temps.index(max(temps))
+
+print(f"Hot days: {hot_days}")
+print(f"Hottest day: {hottest_day}")
+
+######################################################
+#TASK14
+
+#attempts en basda olmali idi attempts = 0
+
+#####################################################
+#TASK15
+
+# Password: hello2024 
+# Weak password: no 
+# uppercase letters   
+# Password: Hello2024 
+# Strong password 
+
+# m = "Weak password"
+# while True :
+#     pswrd = input()
+#     if len(pswrd) < 8 :
+#         print(f"{m:>2f} : cant be less than 8 characters")
+
+###########################################################
+#TASK16
+
+d = 0
+s = 0
+k = 50
+a = 1000
+
+while s < a:
+    s += k
+    k += 10
+    d += 1
+    print(f"Month {d}: {s}")
+
+print(f"Goal reached in month {d}")
+
+###########################################################
+#TASK17
+
+# 101 den sonra ilk 7 ye bolunen tek ededi tapib cixarir
+
+###########################################################
+#TASK18
+
+pin = "2580"
+balance = 1000.0
+attempts = 0
+logged_in = False
+
+while attempts < 3:
+    entered_pin = input("Enter PIN: ")
+    if entered_pin == pin:
+        logged_in = True
+        break
+    else:
+        attempts += 1
+        print(f"Wrong PIN. Attempts left: {3 - attempts}")
+
+if not logged_in:
+    print("Card blocked")
+    exit()
+
+while True:
+    print("\n--- ATM Menu ---")
+    print("1 - Check balance")
+    print("2 - Deposit")
+    print("3 - Withdraw")
+    print("4 - Exit")
+    
+    choice = input("Choose an option (1-4): ")
+    
+    if choice == '1':
+        print(f"Balance: {balance} AZN")
+        
+    elif choice == '2':
+        amount = float(input("Enter amount to deposit: "))
+        if amount <= 0:
+            print("Invalid amount. Must be greater than 0.")
+        else:
+            balance += amount
+            print(f"Successfully deposited. New balance: {balance} AZN")
+            
+    elif choice == '3':
+        amount = float(input("Enter amount to withdraw: "))
+        if amount <= 0 or amount > balance:
+            print("Invalid amount. Cannot withdraw .")
+        else:
+            balance -= amount
+            print(f"Successfully withdrew. New balance: {balance} AZN")
+            
+    elif choice == '4':
+        print("Goodbye")
+        break
+        
+    else:
+        print("Invalid choice")
+
+###############################################################
+#TASK19
+
+su_qiymeti = 1.50
+qebul_edilenler = [0.05, 0.10, 0.20, 0.50, 1.0, 1]  
+
+toplam = 0.0
+
+while toplam < su_qiymeti:
+    pul = float(input("Insert coin: "))
+    
+    if pul in qebul_edilenler:
+        toplam += pul
+        print(f"Total: {round(toplam, 2)}") 
+    else:
+        print("Coin not accepted")
+
+print("Here is your water")
+
+qaliq = toplam - su_qiymeti
+print(f"Change: {round(qaliq, 2)}") #PYTHON KESR EDEDLERI TOPLAYANDA SEHVLER EDIR VERGULDEN EEEY SONRA XETALAR VERE BILIR
+                                    #BUNA GORE DE KESR EDEDLERIN TOPLANMA PRINTINDE ROUND(NESE , 2) YAZMALIYIQ KI VERGULDEN SONRA 2 REQEM QALSIN
+                                    #AMMMA 2 CI YOLDA VAR { :.2f} YAZARAQ SELIQELI OQLAN EDERIK TEMIZ CAVAB
+
+##################################################################
+#TASK20
+
+
+
+    
+
+
+
 
 
 
