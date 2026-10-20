@@ -154,7 +154,7 @@ while grade != -1:
 print(f"Passed: {passed}")
 print(f"Failed: {failed}")
 print(f"Highest: {highest}")
-print(f"Average: {total / count}")
+print(f"Average: {total / count.2f}")
 
 ######################################################
 #TASK12
