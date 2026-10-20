@@ -144,6 +144,20 @@ else:
 
 #########################################
 #TASK9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################
 #TASK10
 balans = 1000
@@ -473,23 +487,6 @@ else:
             print("Cekeceyiniz mebleg:", cek, "AZN")
             print("Balansiniz:", var - cek, "AZN")
 
-
-##############################
-#TASK24
-
-# • Read product code, quantity, coupon code, and delivery code as strings.
-# • Use match / case for products: K = Keyboard (40 AZN), M = Mouse (20 AZN), H = Headphones (60 AZN). Only
-# these uppercase codes are valid.
-# • Quantity must contain ASCII digits only and represent a value from 1 to 5. Reject empty input, letters, spaces, signs,
-# and decimal points before conversion.
-# • Coupon must be exactly NONE or SAVE10. SAVE10 gives a 10% discount only when the subtotal is at least 100
-# AZN; otherwise reject it as ineligible.
-# • Use match / case for delivery: P = Pickup (free), S = Standard. Any other code is invalid.
-# • For Standard delivery, use a ternary expression: free when the discounted subtotal is at least 80 AZN, otherwise 5
-# AZN.
-# • Validate in this order: product, quantity format, quantity range, coupon code, coupon eligibility, delivery code. Print
-# the first error and no receipt if invalid.
-# • On success, display product, quantity, subtotal, discount, delivery fee, and final total.
 
 #################################
 #TASK24
