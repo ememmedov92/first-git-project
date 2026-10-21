@@ -316,6 +316,140 @@ print(f"Change: {round(qaliq, 2)}") #PYTHON KESR EDEDLERI TOPLAYANDA SEHVLER EDI
 
 ##################################################################
 #TASK20
+#CASIB MUREKKEBLERI ELEMISEM PALIT ELEME
+
+a = []
+l = [ i for i in range(2 , 101)]
+for m in l :
+    for n in range (2, m) :
+        if m % n == 0 :
+            a.append(m)
+            break
+for i in a[ : : -1] :
+    print(i , end = " ")  # b = LIST(REVERSED(A)) YAZA DA BILERIK BUNA COX COX DIQQET ELE
+print(len(a))  # SON 3 SETRIN YERINE BIZ *a[ : : -1] 
+
+##############################################################
+#TASK21
+
+# 101 102 
+# 201 202 
+# 301 302
+
+###########################################################
+#task22
+
+for floor in range(1, 6):
+    if floor == 4:
+        continue
+        
+    print(f"Floor {floor}:", end=" ")
+    
+    for room in range(1, 5):
+        print(floor * 100 + room, end=" ")
+        
+    print()
+
+#######################################################
+#TASK23
+
+time_left = int(input())
+customers_served = 0
+customer_count = 1
+
+while time_left > 0:
+    time_needed = int(input(f"Customer {customer_count} needs (min): "))
+    
+    if time_needed == 0:
+        break
+
+    if time_needed < 0:
+        print("Please enter a positive number of minutes")
+        continue
+        
+    if time_needed > time_left:
+        print("Sorry, come back tomorrow")
+        break
+        
+    time_left -= time_needed
+    customers_served += 1
+    customer_count += 1
+
+print(f"Customers served: {customers_served}")
+print(f"Minutes left: {time_left}")
+            
+
+#########################################################
+#TASK24
+
+votes_a = 0
+votes_b = 0
+votes_c = 0
+spoiled = 0
+
+while True:
+    vote = input("Vote: ")
+    
+    if vote == "end":
+        break
+    elif vote == "A":
+        votes_a += 1
+    elif vote == "B":
+        votes_b += 1
+    elif vote == "C":
+        votes_c += 1
+    else:
+        spoiled += 1
+
+print(f"A: {votes_a}  B: {votes_b}  C: {votes_c}")
+print(f"Spoiled: {spoiled}")
+
+max_votes = max(votes_a, votes_b, votes_c)
+
+winners = []
+if votes_a == max_votes:
+    winners.append("A")
+if votes_b == max_votes:
+    winners.append("B")
+if votes_c == max_votes:
+    winners.append("C")
+
+if len(winners) > 1:
+    print("Winner: Tie")
+else:
+    print(f"Winner: {winners[0]}")
+
+
+#########################################################
+#TASK25
+
+while True:
+    card = input("Enter 16-digit card number: ")
+    
+    if not card.isdigit() or len(card) != 16:
+        print("Must be 16 digits")
+        continue
+    
+    total_sum = 0
+    reversed_card = card[::-1]
+    
+    for i in range(len(reversed_card)):
+        digit = int(reversed_card[i])
+        
+        if i % 2 == 1:
+            digit *= 2
+            if digit > 9:
+                digit -= 9
+                
+        total_sum += digit
+        
+    if total_sum % 10 == 0:
+        print("Valid card number")
+    else:
+        print("Invalid card number")
+        
+    break
+
 
 
 
